@@ -32,9 +32,9 @@ echo "on va lancer le script de build de $projet en $couleurDuProjet"
 if [ "$couleurDuProjet" = "green" ]; then
     echo "on va lancer le script de build de $projet en green"
     chmod u+x ./projet_g/"$projet"/deploy/linux/"$script".sh
-    ./projet_g/"$projet"/deploy/linux/"$script".sh
+    cd projet_g/"$projet"/deploy/linux && ./"$script".sh && cd ../../../../
 else
     chmod u+x ./projet_b/"$projet"/deploy/linux/"$script".sh
     echo "on va lancer le script de build de $projet en blue"
-    ./projet_b/"$projet"/deploy/linux/"$script".sh
+    cd projet_b/"$projet"/deploy/linux && ./"$script".sh && cd ../../../../
 fi
