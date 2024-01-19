@@ -1,1 +1,1 @@
-./lancer_script.sh "$1" soonar
+./lancer_script.sh "$1" sonar
