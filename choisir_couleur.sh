@@ -12,11 +12,11 @@ nomDuProjet="$1"
 couleurDuProjet=""
 
 # Vérifie si le conteneur "nomDuProjet-blue" est en cours d'exécution
-if docker ps -q -f name="${nomDuProjet}-blue" | grep -q .; then
+if docker ps -q -f name="${nomDuProjet}-blue" ; then
     couleurDuProjet="green"
 else
     # Vérifie si le conteneur "nomDuProjet-green" est en cours d'exécution
-    if docker ps -q -f name="${nomDuProjet}-green" | grep -q .; then
+    if docker ps -q -f name="${nomDuProjet}-green" ; then
         couleurDuProjet="blue"
     else
         # Si aucun des conteneurs n'est en cours d'exécution, utilise "green" par défaut
