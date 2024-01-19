@@ -11,16 +11,19 @@ nomDuProjet="$1"
 
 couleurDuProjet=""
 
-# Vérifie si le conteneur "nomDuProjet-blue" est en cours d'exécution
-if docker ps -q -f name="${nomDuProjet}-blue" ; then
+echo "Vérification pour ${nomDuProjet}-blue..."
+echo docker ps -q -f name="${nomDuProjet}-blue" | grep -q .
+if docker ps -q -f name="${nomDuProjet}-blue" | grep -q . ; then
     couleurDuProjet="green"
+    echo "Choix de la couleur : ${couleurDuProjet}"
 else
-    # Vérifie si le conteneur "nomDuProjet-green" est en cours d'exécution
-    if docker ps -q -f name="${nomDuProjet}-green" ; then
+    echo "Vérification pour ${nomDuProjet}-green..."
+    if docker ps -q -f name="${nomDuProjet}-green" | grep -q . ; then
         couleurDuProjet="blue"
+        echo "Choix de la couleur : ${couleurDuProjet}"
     else
-        # Si aucun des conteneurs n'est en cours d'exécution, utilise "green" par défaut
         couleurDuProjet="green"
+        echo "Aucun conteneur trouvé, choix de la couleur par défaut : ${couleurDuProjet}"
     fi
 fi
 
