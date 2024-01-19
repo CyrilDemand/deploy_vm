@@ -6,9 +6,6 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-# Choix de la couleur du projet et création du fichier .env
-./choisir_couleur.sh "$1"
-
 projet="$1"
 script="$2"
 # Vérifie si le fichier .env existe
