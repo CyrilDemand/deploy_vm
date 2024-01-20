@@ -5,9 +5,11 @@ if [ "$#" -ne 1 ]; then
     echo "Usage: $0 lien github du projet"
     exit 1
 fi
+derniere_partie=$(basename "$lien_complet")
 
+echo "$derniere_partie"
 # Choix de la couleur du projet et création du fichier .env
-./choisir_couleur.sh "$1"
+./choisir_couleur.sh "$derniere_partie"
 
 lien_git="$1"
 
