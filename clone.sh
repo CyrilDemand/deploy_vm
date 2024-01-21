@@ -43,7 +43,7 @@ if [ "$couleurDuProjet" = "green" ]; then
     cd projet_g/ || exit
     git clone "$lien_git"
     if [ $? -eq 0 ]; then
-        cd "$derniere_partie" || exit
+        cd "$derniere_partie"/ || exit
         git checkout "$id_commit"
         if [ $? -eq 0 ]; then
             echo "Successfully checked out the commit."
@@ -63,7 +63,7 @@ else
     cd projet_b/ || exit
     git clone "$lien_git"
     if [ $? -eq 0 ]; then
-        cd "$derniere_partie" || exit
+        cd "$derniere_partie"/ || exit
         git checkout "$id_commit"
         if [ $? -eq 0 ]; then
             echo "Successfully checked out the commit."
