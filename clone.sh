@@ -9,7 +9,7 @@ fi
 lien_git="$1"
 id_commit="$2"
 
-derniere_partie=$(basename "$lien_complet")
+derniere_partie=$(basename "$lien_git")
 
 echo "$derniere_partie"
 # Choix de la couleur du projet et création du fichier .env
