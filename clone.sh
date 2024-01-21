@@ -59,7 +59,7 @@ if [ "$couleurDuProjet" = "green" ]; then
     cd ../..
 else
     echo "Cloning and building for blue project..."
-    rm -rf projet_b/"$derniere_partie"/*
+    rm -rf projet_b/"$derniere_partie"/
     cd projet_b/ || exit
     git clone "$lien_git"
     if [ $? -eq 0 ]; then
