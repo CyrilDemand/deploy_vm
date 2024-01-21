@@ -34,10 +34,43 @@ echo "on va lancer le script de build de clone en $couleurDuProjet avec comme li
 # si la couleur vaut green, lancer le build.sh du dossier projet_g/$projet/deploy/linux
 # sinon, lancer le build.sh du dossier projet_b/$projet/deploy/linux
 if [ "$couleurDuProjet" = "green" ]; then
+    echo "Cloning and building for green project..."
     rm -rf projet_g/"$derniere_partie"/*
-    cd projet_g/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
+    cd projet_g/ || exit
+    git clone "$lien_git"
+    if [ $? -eq 0 ]; then
+        cd "$derniere_partie" || exit
+        git checkout "$id_commit"
+        if [ $? -eq 0 ]; then
+            echo "Successfully checked out the commit."
+            # Here you can add the command to launch build.sh or any other script
+        else
+            echo "Failed to checkout the commit."
+            exit 1
+        fi
+    else
+        echo "Failed to clone the repository."
+        exit 1
+    fi
+    cd ../..
 else
-    echo "on va lancer le script de build de $projet en blue"
+    echo "Cloning and building for blue project..."
     rm -rf projet_b/"$derniere_partie"/*
-    cd projet_b/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
+    cd projet_b/ || exit
+    git clone "$lien_git"
+    if [ $? -eq 0 ]; then
+        cd "$derniere_partie" || exit
+        git checkout "$id_commit"
+        if [ $? -eq 0 ]; then
+            echo "Successfully checked out the commit."
+            # Here you can add the command to launch build.sh or any other script
+        else
+            echo "Failed to checkout the commit."
+            exit 1
+        fi
+    else
+        echo "Failed to clone the repository."
+        exit 1
+    fi
+    cd ../..
 fi
