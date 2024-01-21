@@ -34,10 +34,10 @@ echo "on va lancer le script de build de clone en $couleurDuProjet avec comme li
 # si la couleur vaut green, lancer le build.sh du dossier projet_g/$projet/deploy/linux
 # sinon, lancer le build.sh du dossier projet_b/$projet/deploy/linux
 if [ "$couleurDuProjet" = "green" ]; then
-    rm -rf projet_g/"$derniere_partie"
+    rm -rf projet_g/"$derniere_partie"/*
     cd projet_g/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
 else
     echo "on va lancer le script de build de $projet en blue"
-    rm -rf projet_g/"$derniere_partie"
+    rm -rf projet_b/"$derniere_partie"/*
     cd projet_b/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
 fi
