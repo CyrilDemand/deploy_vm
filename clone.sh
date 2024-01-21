@@ -31,6 +31,10 @@ fi
 
 echo "on va lancer le script de build de clone en $couleurDuProjet avec comme lien $lien_git"
 
+echo "derniere_partie: $derniere_partie"
+echo "lien_git: $lien_git"
+echo "id_commit: $id_commit"
+
 # si la couleur vaut green, lancer le build.sh du dossier projet_g/$projet/deploy/linux
 # sinon, lancer le build.sh du dossier projet_b/$projet/deploy/linux
 if [ "$couleurDuProjet" = "green" ]; then
