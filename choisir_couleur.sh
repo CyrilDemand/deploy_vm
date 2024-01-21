@@ -11,14 +11,14 @@ nomDuProjet="$1"
 
 couleurDuProjet=""
 
-echo "Vérification pour ${nomDuProjet}-blue..."
-echo docker ps -q -f name="${nomDuProjet}-blue" | grep -q .
-if docker ps -q -f name="${nomDuProjet}-blue" | grep -q . ; then
+echo "Vérification pour ${nomDuProjet}_blue..."
+echo docker ps -q -f name="${nomDuProjet}_blue" | grep -q .
+if docker ps -q -f name="${nomDuProjet}_blue" | grep -q . ; then
     couleurDuProjet="green"
     echo "Choix de la couleur : ${couleurDuProjet}"
 else
-    echo "Vérification pour ${nomDuProjet}-green..."
-    if docker ps -q -f name="${nomDuProjet}-green" | grep -q . ; then
+    echo "Vérification pour ${nomDuProjet}_green..."
+    if docker ps -q -f name="${nomDuProjet}_green" | grep -q . ; then
         couleurDuProjet="blue"
         echo "Choix de la couleur : ${couleurDuProjet}"
     else
