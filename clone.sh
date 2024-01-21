@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Vérifie si le nombre d'arguments est correct
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 lien github du projet"
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 lien github du projet" "id du commit"
     exit 1
 fi
+
 derniere_partie=$(basename "$lien_complet")
 
 echo "$derniere_partie"
@@ -12,6 +13,7 @@ echo "$derniere_partie"
 ./choisir_couleur.sh "$derniere_partie"
 
 lien_git="$1"
+id_commit="$2"
 
 # Vérifie si le fichier .env existe
 couleurDuProjet=""
@@ -32,8 +34,10 @@ echo "on va lancer le script de build de clone en $couleurDuProjet avec comme li
 # si la couleur vaut green, lancer le build.sh du dossier projet_g/$projet/deploy/linux
 # sinon, lancer le build.sh du dossier projet_b/$projet/deploy/linux
 if [ "$couleurDuProjet" = "green" ]; then
-    cd projet_g/ && git clone "$lien_git" && cd ..
+    rm -rf projet_g/"$derniere_partie"
+    cd projet_g/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
 else
     echo "on va lancer le script de build de $projet en blue"
-    cd projet_b/ && git clone "$lien_git" && cd ..
+    rm -rf projet_g/"$derniere_partie"
+    cd projet_b/ && git clone "$lien_git" && cd "$derniere_partie" && git checkout "$id_commit" && cd ../..
 fi
