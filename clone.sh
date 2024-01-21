@@ -6,14 +6,14 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
-derniere_partie="${lien_git##*/}"
+lien_git="$1"
+id_commit="$2"
+
+derniere_partie=$(basename "$lien_complet")
 
 echo "$derniere_partie"
 # Choix de la couleur du projet et création du fichier .env
 ./choisir_couleur.sh "$derniere_partie"
-
-lien_git="$1"
-id_commit="$2"
 
 # Vérifie si le fichier .env existe
 couleurDuProjet=""
