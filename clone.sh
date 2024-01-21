@@ -39,7 +39,7 @@ echo "id_commit: $id_commit"
 # sinon, lancer le build.sh du dossier projet_b/$projet/deploy/linux
 if [ "$couleurDuProjet" = "green" ]; then
     echo "Cloning and building for green project..."
-    rm -rf projet_g/"$derniere_partie"/*
+    rm -rf projet_g/"$derniere_partie"/
     cd projet_g/ || exit
     git clone "$lien_git"
     if [ $? -eq 0 ]; then
